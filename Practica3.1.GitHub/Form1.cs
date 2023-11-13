@@ -9,21 +9,23 @@ namespace Practica3._1.GitHub
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string textoTelegrama;
+            string textoTelegramaODGM;
             char tipoTelegrama = 'o';
             int numPalabras = 0;
             double coste;
             //Leo el telegrama
-            textoTelegrama = txtTelegrama.Text;
+            textoTelegramaODGM = txtTelegrama.Text;
             // telegrama urgente?
             if (rbUrgente.Checked)
                 tipoTelegrama = 'u';
+            if (rbOrdinario.Checked)
+                tipoTelegrama = 'o';
             //Obtengo el número de palabras que forma el telegrama
             //numPalabras = textoTelegrama.Length;  cuenta letras, no palabras
             char[] delimitadores = new char[] { ' ', '\r', '\n' };
-            numPalabras = textoTelegrama.Split(delimitadores, StringSplitOptions.RemoveEmptyEntries).Length;
+            numPalabras = textoTelegramaODGM.Split(delimitadores, StringSplitOptions.RemoveEmptyEntries).Length;
             //Si el telegrama es ordinario
-            if (rbOrdinario.Checked)
+            if (tipoTelegrama == 'o')
                 if (numPalabras <= 10)
                     coste = 2.5;
                 else
